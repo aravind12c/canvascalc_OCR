@@ -1,4 +1,4 @@
-# Cucumber Framework with Parllel Testing in Docker Containers
+# Cucumber Framework for Canvas Calculater
 
 ## Tech stack Used
 Java, Cucumber, Selenium Webdriver, TestNG, Extent, Docker
@@ -18,24 +18,24 @@ Java, Cucumber, Selenium Webdriver, TestNG, Extent, Docker
 - Then enter command docker-compose up -d
     
 ## Project Setup 
-- Driver setup and capabilities : \src\main\java\com.flink.driverInit\
-- Page Obejcts 					: \src\main\java\com.flink.pageObjects\
-- Failure Retry					: \src\main\java\com.flink.retryCase\
-- Web Utilities 				: \src\main\java\com.flink.webUtilities\
-- Web Configs 					: \src\test\resources\driver\WebConfig
-- Test Runner  					: \src\test\java\com.flink.testfactory\
-- Step Definitions 				: \src\test\java\com.flink.stepDefinitions\
+- Driver setup and capabilities : \src\main\java\com.canvas.driverInit\
+- Page Obejcts 					: \src\main\java\com.canvas.pageObjects\
+- Web Utilities 				: \src\main\java\com.canvas.webUtilities\
+- Web Configs 					: \src\test\resources\WebConfig
+- Test Runner  					: \src\test\java\com.canvas.testfactory\
+- Step Definitions 				: \src\test\java\com.canvas.stepDefinitions\
 - Feature files 				: \src\test\resources\Features\
 - Extent Configs				: \src\test\resources\extent-config\
 - Extent Properties				: \src\test\resources\
+- Reports       				: \reports
 
 ## Pre-Steps
-- If you want to update URL and Payment details, please open config.properties from Web Config and update it.
+- If you want to update URL, please open config.properties from Web Config and update it.
 - In you want to run the project in docker, in config properties change the runmode to remote and if you want to run in local change the runmode to local(By default its in local)
 
 ## Steps to run
-- Open tesNG.xml file, from "TestNGXML" folder
-- Now run as TestNG Suite
+- Open TestRunner file, from "Test Runner" folder
+- Now run as JUNIT, please configure it so that it can be run as JUnit 4
 or
 - go to the project folder and use mvn clean install
 or
@@ -47,6 +47,10 @@ Below are the points considered while creating the framework
 - Design pattern - Page object model
 - Framework - Cucumber(For Test approach), Selenium Driver(For UI Automation), TestNG(For Parallel Execution and Retry Failed Cases), Extent(For Report)
 - Language - Java
+- Java OCR - Used asprise OCR free version, to read the content from the image. 
+- Report - Extent Report is used. We will have the screenshot as weel attached on failed scenarios.
+
+This project is canvas project, where the Calculator is made of Canvas tag. To perform calculations, I used Keyboard actions and to get results I used Asprise OCR to get the values. Please note, it is the licensed tool, so until we have licence, there will be a pop-up to buy the license. 
 
 ## Note 
-I have added retry scenarios on failures. If by chance any case fails while execution, then it will automatically triggers the failed cases. If any case got failed, it will be marked as Skipped in Console as it got retried and passed on second execution.
+This project is just for POC, it has to be upgraded, to handle the pop-up, and creating thread safty way to execute in parllel, etc...
