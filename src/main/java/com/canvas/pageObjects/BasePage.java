@@ -67,7 +67,6 @@ public class BasePage {
 		Ocr imgrecognition = new Ocr();
 		try {
 			imgrecognition.startEngine("eng", Ocr.SPEED_FASTEST);
-			sendActionKeysEnter();
 			String s = imgrecognition.recognize(new File[] { new File(imagepath) }, Ocr.RECOGNIZE_TYPE_ALL,
 					Ocr.OUTPUT_FORMAT_PLAINTEXT);
 			imgrecognition.stopEngine();
